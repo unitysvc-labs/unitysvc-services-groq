@@ -60,15 +60,18 @@
     "properties": {
       "api_key": {
         "type": "string",
-        "title": "API Key",
+        "title": "API Key ({{ env_api_key_name }})",
         "default": ""
       }
     }
   },
   "user_parameters_ui_schema": {
     "api_key": {
+      "ui:options": {
+        "secret": "{{ env_api_key_name }}"
+      },
       "ui:disabled": true,
-      "ui:description": "API Key ({{ env_api_key_name }}) is managed via secrets"
+      "ui:description": "Managed via secrets"
     }
   },
   "service_options": {

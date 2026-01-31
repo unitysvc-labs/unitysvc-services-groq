@@ -10,7 +10,7 @@
   "display_name": "Whisper Large V3 Turbo",
   "name": "whisper-large-v3-turbo",
   "schema": "offering_v1",
-  "service_type": "prerecorded_transcription",
+  "service_type": "llm",
   "status": "ready",
   "tags": [
     "byop"
