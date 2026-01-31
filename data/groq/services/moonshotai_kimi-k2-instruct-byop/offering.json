@@ -2,11 +2,11 @@
   "currency": "USD",
   "description": "Moonshotai/Kimi K2 Instruct language model",
   "details": {
-    "contextLength": 262144,
-    "litellm_provider": "groq",
-    "max_input_tokens": 262144,
-    "max_output_tokens": 16384,
-    "max_tokens": 16384,
+    "contextLength": 131072,
+    "litellm_provider": "novita",
+    "max_input_tokens": 131072,
+    "max_output_tokens": 131072,
+    "max_tokens": 131072,
     "mode": "chat",
     "object": "model",
     "owned_by": "groq"
@@ -15,8 +15,8 @@
   "name": "moonshotai/kimi-k2-instruct",
   "payout_price": {
     "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "1",
-    "output": "3",
+    "input": "0.5700000000000001",
+    "output": "2.3",
     "reference": null,
     "type": "one_million_tokens"
   },
