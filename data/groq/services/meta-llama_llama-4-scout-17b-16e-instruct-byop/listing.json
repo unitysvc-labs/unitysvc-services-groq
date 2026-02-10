@@ -59,7 +59,10 @@
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
-      "base_url": "${GATEWAY_BASE_URL}/p/groq"
+      "base_url": "${GATEWAY_BASE_URL}/p/groq",
+      "routing_key": {
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct"
+      }
     }
   },
   "user_parameters_schema": {
