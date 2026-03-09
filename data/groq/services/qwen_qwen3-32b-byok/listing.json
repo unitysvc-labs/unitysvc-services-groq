@@ -62,7 +62,6 @@
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
-      "api_key": "${ secrets.GROQ_API_KEY }",
       "base_url": "${GATEWAY_BASE_URL}/p/groq",
       "routing_key": {
         "model": "qwen/qwen3-32b"
