@@ -57,44 +57,16 @@
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
-  "service_options": {
-    "ops_testing_parameters": {
-      "api_key": "${ secrets.GROQ_API_KEY }"
-    }
-  },
   "status": "ready",
   "time_created": "2026-01-26T02:53:47.078Z",
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
+      "api_key": "${ secrets.GROQ_API_KEY }",
       "base_url": "${GATEWAY_BASE_URL}/p/groq",
       "routing_key": {
         "model": "meta-llama/llama-4-maverick-17b-128e-instruct"
       }
-    }
-  },
-  "user_parameters_schema": {
-    "description": "Access service with your own api-key",
-    "properties": {
-      "api_key": {
-        "default": "",
-        "title": "API Key (GROQ_API_KEY)",
-        "type": "string"
-      }
-    },
-    "required": [
-      "api_key"
-    ],
-    "title": "Be Your Own Provider",
-    "type": "object"
-  },
-  "user_parameters_ui_schema": {
-    "api_key": {
-      "ui:description": "Your API key will be securely stored as secret 'GROQ_API_KEY'",
-      "ui:options": {
-        "secret": "GROQ_API_KEY"
-      },
-      "ui:placeholder": "Enter your API key"
     }
   }
 }
