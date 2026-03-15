@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Whisper Large V3 language model",
   "details": {
@@ -21,9 +24,12 @@
   "upstream_access_interfaces": {
     "Groq API": {
       "access_method": "http",
-      "base_url": "https://api.groq.com/openai/v1",
       "api_key": "${ customer_secrets.GROQ_API_KEY }",
-      "rate_limits": []
+      "base_url": "https://api.groq.com/openai/v1",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "whisper-large-v3"
+      }
     }
   }
 }
