@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Openai/Gpt Oss 120B language model",
   "details": {
@@ -14,10 +17,9 @@
   "display_name": "Openai/Gpt Oss 120B",
   "name": "openai/gpt-oss-120b",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "0.049999999999999996",
-    "output": "0.44999999999999996",
-    "reference": null,
+    "description": "Service provider charges $0.05 / $0.45 per 1M input/output tokens",
+    "input": "0",
+    "output": "0",
     "type": "one_million_tokens"
   },
   "schema": "offering_v1",
@@ -32,9 +34,12 @@
   "upstream_access_interfaces": {
     "Groq API": {
       "access_method": "http",
-      "base_url": "https://api.groq.com/openai/v1",
       "api_key": "${ customer_secrets.GROQ_API_KEY }",
-      "rate_limits": []
+      "base_url": "https://api.groq.com/openai/v1",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "openai/gpt-oss-120b"
+      }
     }
   }
 }

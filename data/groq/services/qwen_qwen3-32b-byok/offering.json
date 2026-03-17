@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Qwen/Qwen3 32B language model",
   "details": {
@@ -14,10 +17,9 @@
   "display_name": "Qwen/Qwen3 32B",
   "name": "qwen/qwen3-32b",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "0.29",
-    "output": "0.59",
-    "reference": null,
+    "description": "Service provider charges $0.29 / $0.59 per 1M input/output tokens",
+    "input": "0",
+    "output": "0",
     "type": "one_million_tokens"
   },
   "schema": "offering_v1",
@@ -32,9 +34,12 @@
   "upstream_access_interfaces": {
     "Groq API": {
       "access_method": "http",
-      "base_url": "https://api.groq.com/openai/v1",
       "api_key": "${ customer_secrets.GROQ_API_KEY }",
-      "rate_limits": []
+      "base_url": "https://api.groq.com/openai/v1",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "qwen/qwen3-32b"
+      }
     }
   }
 }

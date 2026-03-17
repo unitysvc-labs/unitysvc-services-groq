@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Moonshotai/Kimi K2 Instruct 0905 language model",
   "details": {
@@ -14,10 +17,10 @@
   "display_name": "Moonshotai/Kimi K2 Instruct 0905",
   "name": "moonshotai/kimi-k2-instruct-0905",
   "payout_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "1",
-    "output": "3",
-    "reference": null,
+    "cached_input": "0",
+    "description": "Service provider charges $1 / $3 / $0.5 per 1M input/output/cached tokens",
+    "input": "0",
+    "output": "0",
     "type": "one_million_tokens"
   },
   "schema": "offering_v1",
@@ -32,9 +35,12 @@
   "upstream_access_interfaces": {
     "Groq API": {
       "access_method": "http",
-      "base_url": "https://api.groq.com/openai/v1",
       "api_key": "${ customer_secrets.GROQ_API_KEY }",
-      "rate_limits": []
+      "base_url": "https://api.groq.com/openai/v1",
+      "rate_limits": [],
+      "routing_key": {
+        "model": "moonshotai/kimi-k2-instruct-0905"
+      }
     }
   }
 }

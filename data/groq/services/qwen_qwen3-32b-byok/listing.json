@@ -58,10 +58,9 @@
     }
   },
   "list_price": {
-    "description": "Pricing Per 1M Tokens Input/Output",
-    "input": "0.29",
-    "output": "0.59",
-    "reference": null,
+    "description": "Service provider charges $0.29 / $0.59 per 1M input/output tokens",
+    "input": "0",
+    "output": "0",
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
