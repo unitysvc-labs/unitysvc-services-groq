@@ -69,7 +69,7 @@
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
-      "base_url": "${GATEWAY_BASE_URL}/p/groq",
+      "base_url": "${API_GATEWAY_BASE_URL}/p/groq",
       "routing_key": {
         "model": "meta-llama/llama-4-maverick-17b-128e-instruct"
       }

@@ -70,7 +70,7 @@
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
-      "base_url": "${GATEWAY_BASE_URL}/p/groq",
+      "base_url": "${API_GATEWAY_BASE_URL}/p/groq",
       "routing_key": {
         "model": "moonshotai/kimi-k2-instruct-0905"
       }
