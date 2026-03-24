@@ -6,7 +6,7 @@
   "description": "Canopylabs/Orpheus Arabic Saudi language model",
   "details": {
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Canopy Labs"
   },
   "display_name": "Canopylabs/Orpheus Arabic Saudi",
   "name": "canopylabs/orpheus-arabic-saudi",
