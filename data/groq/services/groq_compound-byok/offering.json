@@ -6,7 +6,7 @@
   "description": "Groq/Compound language model",
   "details": {
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Groq"
   },
   "display_name": "Groq/Compound",
   "name": "groq/compound",
