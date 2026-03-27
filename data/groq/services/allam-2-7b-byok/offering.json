@@ -6,7 +6,7 @@
   "description": "Allam 2 7B language model",
   "details": {
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "SDAIA"
   },
   "display_name": "Allam 2 7B",
   "name": "allam-2-7b",

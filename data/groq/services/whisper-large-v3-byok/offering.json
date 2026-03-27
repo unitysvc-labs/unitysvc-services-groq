@@ -8,7 +8,7 @@
     "litellm_provider": "groq",
     "mode": "audio_transcription",
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "OpenAI"
   },
   "display_name": "Whisper Large V3",
   "name": "whisper-large-v3",
