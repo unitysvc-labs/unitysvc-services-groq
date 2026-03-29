@@ -12,7 +12,7 @@
     "max_tokens": 32768,
     "mode": "chat",
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Meta"
   },
   "display_name": "Llama 3.3 70B Versatile",
   "name": "llama-3.3-70b-versatile",
