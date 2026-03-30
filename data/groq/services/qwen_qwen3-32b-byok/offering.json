@@ -12,7 +12,7 @@
     "max_tokens": 131000,
     "mode": "chat",
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Alibaba Cloud"
   },
   "display_name": "Qwen/Qwen3 32B",
   "name": "qwen/qwen3-32b",

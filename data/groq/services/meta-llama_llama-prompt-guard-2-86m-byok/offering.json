@@ -6,7 +6,7 @@
   "description": "Meta Llama/Llama Prompt Guard 2 86M language model",
   "details": {
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Meta"
   },
   "display_name": "Meta Llama/Llama Prompt Guard 2 86M",
   "name": "meta-llama/llama-prompt-guard-2-86m",
