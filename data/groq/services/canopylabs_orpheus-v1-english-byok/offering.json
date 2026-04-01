@@ -6,7 +6,7 @@
   "description": "Canopylabs/Orpheus V1 English language model",
   "details": {
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Canopy Labs"
   },
   "display_name": "Canopylabs/Orpheus V1 English",
   "name": "canopylabs/orpheus-v1-english",

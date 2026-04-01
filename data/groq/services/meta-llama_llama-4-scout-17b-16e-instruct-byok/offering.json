@@ -12,7 +12,7 @@
     "max_tokens": 8192,
     "mode": "chat",
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Meta"
   },
   "display_name": "Meta Llama/Llama 4 Scout 17B 16E Instruct",
   "name": "meta-llama/llama-4-scout-17b-16e-instruct",
