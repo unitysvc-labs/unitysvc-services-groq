@@ -12,7 +12,7 @@
     "max_tokens": 16384,
     "mode": "chat",
     "object": "model",
-    "owned_by": "groq"
+    "owned_by": "Moonshot AI"
   },
   "display_name": "Moonshotai/Kimi K2 Instruct 0905",
   "name": "moonshotai/kimi-k2-instruct-0905",
