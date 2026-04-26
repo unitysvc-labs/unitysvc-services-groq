@@ -6,7 +6,9 @@
   "description": "Groq/Compound Mini language model",
   "details": {
     "object": "model",
-    "owned_by": "Groq"
+    "owned_by": "Groq",
+    "context_length": null,
+    "parameter_count": null
   },
   "display_name": "Groq/Compound Mini",
   "name": "groq/compound-mini",

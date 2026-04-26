@@ -5,14 +5,15 @@
   "currency": "USD",
   "description": "Llama 3.1 8B Instant language model",
   "details": {
-    "contextLength": 128000,
     "litellm_provider": "groq",
     "max_input_tokens": 128000,
     "max_output_tokens": 8192,
     "max_tokens": 8192,
     "mode": "chat",
     "object": "model",
-    "owned_by": "Meta"
+    "owned_by": "Meta",
+    "context_length": 128000,
+    "parameter_count": null
   },
   "display_name": "Llama 3.1 8B Instant",
   "name": "llama-3.1-8b-instant",

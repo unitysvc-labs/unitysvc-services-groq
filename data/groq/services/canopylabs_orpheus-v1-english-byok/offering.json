@@ -6,7 +6,9 @@
   "description": "Canopylabs/Orpheus V1 English language model",
   "details": {
     "object": "model",
-    "owned_by": "Canopy Labs"
+    "owned_by": "Canopy Labs",
+    "context_length": null,
+    "parameter_count": null
   },
   "display_name": "Canopylabs/Orpheus V1 English",
   "name": "canopylabs/orpheus-v1-english",

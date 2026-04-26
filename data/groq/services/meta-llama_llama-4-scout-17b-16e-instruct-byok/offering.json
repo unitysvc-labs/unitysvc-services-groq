@@ -5,14 +5,15 @@
   "currency": "USD",
   "description": "Meta Llama/Llama 4 Scout 17B 16E Instruct language model",
   "details": {
-    "contextLength": 131072,
     "litellm_provider": "groq",
     "max_input_tokens": 131072,
     "max_output_tokens": 8192,
     "max_tokens": 8192,
     "mode": "chat",
     "object": "model",
-    "owned_by": "Meta"
+    "owned_by": "Meta",
+    "context_length": 131072,
+    "parameter_count": null
   },
   "display_name": "Meta Llama/Llama 4 Scout 17B 16E Instruct",
   "name": "meta-llama/llama-4-scout-17b-16e-instruct",

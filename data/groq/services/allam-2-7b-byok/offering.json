@@ -6,7 +6,9 @@
   "description": "Allam 2 7B language model",
   "details": {
     "object": "model",
-    "owned_by": "SDAIA"
+    "owned_by": "SDAIA",
+    "context_length": null,
+    "parameter_count": null
   },
   "display_name": "Allam 2 7B",
   "name": "allam-2-7b",

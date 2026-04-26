@@ -6,7 +6,9 @@
   "description": "Meta Llama/Llama Prompt Guard 2 22M language model",
   "details": {
     "object": "model",
-    "owned_by": "Meta"
+    "owned_by": "Meta",
+    "context_length": null,
+    "parameter_count": null
   },
   "display_name": "Meta Llama/Llama Prompt Guard 2 22M",
   "name": "meta-llama/llama-prompt-guard-2-22m",
