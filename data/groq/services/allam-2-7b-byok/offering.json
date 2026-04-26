@@ -5,9 +5,9 @@
   "currency": "USD",
   "description": "Allam 2 7B language model",
   "details": {
+    "context_length": null,
     "object": "model",
     "owned_by": "SDAIA",
-    "context_length": null,
     "parameter_count": null
   },
   "display_name": "Allam 2 7B",

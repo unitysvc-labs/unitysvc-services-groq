@@ -5,9 +5,9 @@
   "currency": "USD",
   "description": "Canopylabs/Orpheus Arabic Saudi language model",
   "details": {
+    "context_length": null,
     "object": "model",
     "owned_by": "Canopy Labs",
-    "context_length": null,
     "parameter_count": null
   },
   "display_name": "Canopylabs/Orpheus Arabic Saudi",

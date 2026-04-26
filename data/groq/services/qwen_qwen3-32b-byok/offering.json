@@ -5,6 +5,7 @@
   "currency": "USD",
   "description": "Qwen/Qwen3 32B language model",
   "details": {
+    "context_length": 131000,
     "litellm_provider": "groq",
     "max_input_tokens": 131000,
     "max_output_tokens": 131000,
@@ -12,7 +13,6 @@
     "mode": "chat",
     "object": "model",
     "owned_by": "Alibaba Cloud",
-    "context_length": 131000,
     "parameter_count": null
   },
   "display_name": "Qwen/Qwen3 32B",
