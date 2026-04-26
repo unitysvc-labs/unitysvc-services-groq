@@ -5,8 +5,10 @@
   "currency": "USD",
   "description": "Canopylabs/Orpheus V1 English language model",
   "details": {
+    "context_length": null,
     "object": "model",
-    "owned_by": "Canopy Labs"
+    "owned_by": "Canopy Labs",
+    "parameter_count": null
   },
   "display_name": "Canopylabs/Orpheus V1 English",
   "name": "canopylabs/orpheus-v1-english",

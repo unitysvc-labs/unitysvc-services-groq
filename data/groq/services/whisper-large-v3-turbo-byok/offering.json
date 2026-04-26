@@ -5,10 +5,12 @@
   "currency": "USD",
   "description": "Whisper Large V3 Turbo language model",
   "details": {
+    "context_length": null,
     "litellm_provider": "groq",
     "mode": "audio_transcription",
     "object": "model",
-    "owned_by": "OpenAI"
+    "owned_by": "OpenAI",
+    "parameter_count": null
   },
   "display_name": "Whisper Large V3 Turbo",
   "name": "whisper-large-v3-turbo",

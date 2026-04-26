@@ -5,8 +5,10 @@
   "currency": "USD",
   "description": "Meta Llama/Llama Prompt Guard 2 86M language model",
   "details": {
+    "context_length": null,
     "object": "model",
-    "owned_by": "Meta"
+    "owned_by": "Meta",
+    "parameter_count": null
   },
   "display_name": "Meta Llama/Llama Prompt Guard 2 86M",
   "name": "meta-llama/llama-prompt-guard-2-86m",

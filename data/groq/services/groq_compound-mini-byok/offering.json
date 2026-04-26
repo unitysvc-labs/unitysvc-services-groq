@@ -5,8 +5,10 @@
   "currency": "USD",
   "description": "Groq/Compound Mini language model",
   "details": {
+    "context_length": null,
     "object": "model",
-    "owned_by": "Groq"
+    "owned_by": "Groq",
+    "parameter_count": null
   },
   "display_name": "Groq/Compound Mini",
   "name": "groq/compound-mini",
