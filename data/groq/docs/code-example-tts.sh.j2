@@ -2,7 +2,7 @@ curl https://api.groq.com/openai/v1/audio/speech \
   -H "Authorization: Bearer $UNITYSVC_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "${MODEL:-{{offering.name}}}",
+    "model": "{{ routing_key.model }}}}",
     "input": "I love building and shipping new features for our users!",
     "voice": "Fritz-PlayAI",
     "response_format": "wav"

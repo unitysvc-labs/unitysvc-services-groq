@@ -7,7 +7,7 @@ UNITYSVC_API_KEY = os.environ["UNITYSVC_API_KEY"]
 url = "https://api.groq.com/openai/v1/chat/completions"
 
 payload = {
-    "model": os.environ.get("MODEL", "{{offering.name}}"),
+    "model": "{{ routing_key.model }}",
     "messages": [
         {
             "role": "user",
