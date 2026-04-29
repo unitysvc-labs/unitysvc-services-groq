@@ -10,6 +10,9 @@
     "max_input_tokens": 128000,
     "max_output_tokens": 32768,
     "max_tokens": 32768,
+    "metadata_sources": {
+      "context_length": "litellm"
+    },
     "mode": "chat",
     "object": "model",
     "owned_by": "Meta",
