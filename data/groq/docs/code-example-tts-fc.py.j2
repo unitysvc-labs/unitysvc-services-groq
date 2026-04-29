@@ -8,7 +8,7 @@ def generate_tts(input_text: str, voice: str = "Fritz-PlayAI", fmt: str = "wav")
     headers = {"Authorization": f"Bearer {UNITYSVC_API_KEY}", "Content-Type": "application/json"}
 
     payload = {
-        "model": os.environ.get("MODEL", "{{offering.name}}"),
+        "model": "{{ routing_key.model }}",
         "input": input_text,
         "voice": voice,
         "response_format": fmt

@@ -6,7 +6,7 @@ UNITYSVC_API_KEY = os.getenv("UNITYSVC_API_KEY")
 url = "https://api.groq.com/openai/v1/audio/speech"
 
 payload = {
-    "model": os.environ.get("MODEL", "{{offering.name}}"),
+    "model": "{{ routing_key.model }}",
     "input": "I love building and shipping new features for our users!",
     "voice": "Fritz-PlayAI",
     "response_format": "wav"

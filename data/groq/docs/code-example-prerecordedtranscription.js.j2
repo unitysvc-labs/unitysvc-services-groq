@@ -9,7 +9,7 @@ async function main() {
 
   const form = new FormData();
   form.append("file", blob, filePath);
-  form.append("model", process.env.MODEL || "{{offering.name}}");
+  form.append("model", "{{ routing_key.model }}");
 
   const response = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
     method: "POST",
