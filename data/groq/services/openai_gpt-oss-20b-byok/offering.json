@@ -11,12 +11,13 @@
     "max_output_tokens": 131072,
     "max_tokens": 131072,
     "metadata_sources": {
-      "context_length": "openrouter"
+      "context_length": "openrouter",
+      "parameter_count": "huggingface_safetensors"
     },
     "mode": "chat",
     "object": "model",
     "owned_by": "OpenAI",
-    "parameter_count": null
+    "parameter_count": 19707494400
   },
   "display_name": "Openai/Gpt Oss 20B",
   "name": "openai/gpt-oss-20b",
