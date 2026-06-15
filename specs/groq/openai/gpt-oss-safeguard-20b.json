@@ -1,0 +1,41 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.groq.com/openai/v1",
+    "description": "Openai/Gpt Oss Safeguard 20B language model",
+    "details": {
+      "context_length": 131072,
+      "litellm_provider": "groq",
+      "max_input_tokens": 131072,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "metadata_sources": {
+        "context_length": "openrouter",
+        "parameter_count": "huggingface_safetensors"
+      },
+      "mode": "chat",
+      "object": "model",
+      "owned_by": "OpenAI",
+      "parameter_count": 19707494400
+    },
+    "display_name": "Openai/Gpt Oss Safeguard 20B",
+    "env_api_key_name": "GROQ_API_KEY",
+    "list_price": {
+      "cached_input": "0",
+      "description": "Service provider charges $0.075 / $0.3 / $0.037 per 1M input/output/cached tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "offering_name": "openai/gpt-oss-safeguard-20b",
+    "payout_price": {
+      "cached_input": "0",
+      "description": "Service provider charges $0.075 / $0.3 / $0.037 per 1M input/output/cached tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "provider_display_name": "Groq",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

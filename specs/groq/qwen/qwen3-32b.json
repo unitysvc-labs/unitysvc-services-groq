@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.groq.com/openai/v1",
+    "description": "Qwen/Qwen3 32B language model",
+    "details": {
+      "context_length": 131072,
+      "litellm_provider": "groq",
+      "max_input_tokens": 131000,
+      "max_output_tokens": 131000,
+      "max_tokens": 131000,
+      "metadata_sources": {
+        "context_length": "openrouter"
+      },
+      "mode": "chat",
+      "object": "model",
+      "owned_by": "Alibaba Cloud",
+      "parameter_count": null
+    },
+    "display_name": "Qwen/Qwen3 32B",
+    "env_api_key_name": "GROQ_API_KEY",
+    "list_price": {
+      "description": "Service provider charges $0.29 / $0.59 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "offering_name": "qwen/qwen3-32b",
+    "payout_price": {
+      "description": "Service provider charges $0.29 / $0.59 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "provider_display_name": "Groq",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.groq.com/openai/v1",
+    "description": "Meta Llama/Llama Prompt Guard 2 86M language model",
+    "details": {
+      "context_length": null,
+      "object": "model",
+      "owned_by": "Meta",
+      "parameter_count": null
+    },
+    "display_name": "Meta Llama/Llama Prompt Guard 2 86M",
+    "env_api_key_name": "GROQ_API_KEY",
+    "list_price": null,
+    "offering_name": "meta-llama/llama-prompt-guard-2-86m",
+    "payout_price": null,
+    "provider_display_name": "Groq",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
