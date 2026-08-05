@@ -4,10 +4,10 @@
     "description": "Openai/Gpt Oss 120B language model",
     "details": {
       "context_length": 131072,
-      "litellm_provider": "deepinfra",
-      "max_input_tokens": 131072,
-      "max_output_tokens": 131072,
-      "max_tokens": 131072,
+      "litellm_provider": "cloudflare",
+      "max_input_tokens": 128000,
+      "max_output_tokens": 128000,
+      "max_tokens": 128000,
       "metadata_sources": {
         "context_length": "openrouter",
         "parameter_count": "huggingface_safetensors"
@@ -15,19 +15,19 @@
       "mode": "chat",
       "object": "model",
       "owned_by": "OpenAI",
-      "parameter_count": 118244966400
+      "parameter_count": 114661785600
     },
     "display_name": "Openai/Gpt Oss 120B",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": {
-      "description": "Service provider charges $0.05 / $0.45 per 1M input/output tokens",
+      "description": "Service provider charges $0.35 / $0.75 per 1M input/output tokens",
       "input": "0",
       "output": "0",
       "type": "one_million_tokens"
     },
     "offering_name": "openai/gpt-oss-120b",
     "payout_price": {
-      "description": "Service provider charges $0.05 / $0.45 per 1M input/output tokens",
+      "description": "Service provider charges $0.35 / $0.75 per 1M input/output tokens",
       "input": "0",
       "output": "0",
       "type": "one_million_tokens"
