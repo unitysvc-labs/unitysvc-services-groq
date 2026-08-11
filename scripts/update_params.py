@@ -184,7 +184,7 @@ def main():
     source = ModelSource(api_key)
     write_params_from_iterator(
         iterator=source.iter_models(),
-        output_dir=SCRIPT_DIR.parent / "specs",
+        output_dir=SCRIPT_DIR.parent / "services" / "specs",
     )
 
 

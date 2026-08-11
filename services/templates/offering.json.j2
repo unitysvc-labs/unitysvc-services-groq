@@ -1,23 +1,63 @@
 {
   "name": "{{ offering_name }}",
   "display_name": "{{ display_name }}",
-  "description": {{ description | tojson }},
+{#- Marketplace description, three paragraphs separated by blank lines per the
+    repo convention: (1) a short teaser, (2) what the service is, (3) how to
+    consume it. Synthesized from the per-model params so every auto-populated
+    model gets a conformant description without hand-authoring hundreds. -#}
+{%- set _brief = description | default(display_name ~ ' — a ' ~ service_type ~ ' model served by ' ~ provider_display_name, true) %}
+{%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if details.context_length else '' %}
+{%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API' ~ _ctx ~ '. Requests are proxied through the UnitySVC gateway and billed per token.' %}
+{%- if allow_managed %}
+{%- set _howto = 'Reach it through the UnitySVC gateway on either channel: bring your own ' ~ provider_display_name ~ ' API key (byok), or use the seller-managed key and pay UnitySVC per token (managed). The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
+{%- else %}
+{%- set _howto = 'Reach it through the UnitySVC gateway with your own ' ~ provider_display_name ~ ' API key (the byok channel). The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
+{%- endif %}
+{%- set _description = _brief ~ '\n\n' ~ _detail ~ '\n\n' ~ _howto %}
+  "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": ["{{ service_type }}"],
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
-  "tags": ["ai", "gateway", "byok"],
-  "details": {{ details | tojson }},
+  "tags": ["ai", "gateway", "byok"{% if allow_managed %}, "managed"{% endif %}],
+{#- Lean details (unitysvc #1768): carry ONLY the fields the platform actually
+    consumes — the routing formats, and context_length (used by the
+    by_context_length routing strategy and the frontend). The rest of what a
+    provider's /models returns is unused, and source-2 enrichment
+    (litellm/leaderboard) is deliberately NOT carried: its fuzzy model matching
+    is unreliable. input/output_formats express both dialects because the
+    llm_translator below serves callers in either (responses come back in kind). -#}
+{%- set _details = {"input_formats": input_formats | default(["openai", "anthropic"]), "output_formats": output_formats | default(["openai_response", "anthropic_response"]), "context_length": details.get("context_length"), "parameter_count": details.get("parameter_count")} %}
+  "details": {{ _details | tojson }},
 {%- if payout_price %}
   "payout_price": {{ payout_price | tojson }},
 {%- endif %}
+{#- Channel TYPE is derived from the api_key source alone (no explicit flag):
+    byok = customer key (${ customer_secrets.* }), managed = seller key
+    (${ secrets.* }). Both front the same upstream and differ only in whose key
+    pays, so they live on ONE offering. Non-resell providers ship byok only
+    (allow_managed off); token-resell providers set allow_managed true to add
+    the managed channel. llm_translator lets the upstream also serve callers in
+    the other dialect; the gateway auto-detects and only translates when the
+    incoming dialect differs from the upstream's. -#}
   "upstream_access_config": {
-    "{{ provider_display_name }} API": {
+    "byok": {
       "access_method": "http",
-      "base_url": "{{ api_base_url | replace('/v1', '') }}",
+      "base_url": "{{ api_base_url | replace(base_url_strip | default('/v1'), '') }}",
       "api_key": "${ customer_secrets.{{ env_api_key_name }} }",
-      "rate_limits": [],
-      "routing_key": {"model": "{{ offering_name }}"}
-    }
+      "rate_limits": {{ rate_limits | default([]) | tojson }},
+      "routing_key": {"model": "{{ offering_name }}"},
+      "request_transformer": {"llm_translator": "{{ llm_translator | default('anthropic_to_openai') }}"},
+      "sort_order": 2
+    }{% if allow_managed %},
+    "managed": {
+      "access_method": "http",
+      "base_url": "{{ api_base_url | replace(base_url_strip | default('/v1'), '') }}",
+      "api_key": "${ secrets.{{ env_api_key_name }} }",
+      "rate_limits": {{ rate_limits | default([]) | tojson }},
+      "routing_key": {"model": "{{ offering_name }}"},
+      "request_transformer": {"llm_translator": "{{ llm_translator | default('anthropic_to_openai') }}"},
+      "sort_order": 1
+    }{% endif %}
   }
 }
