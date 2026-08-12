@@ -24,6 +24,7 @@
       "output": "0",
       "type": "one_million_tokens"
     },
+    "modality": null,
     "offering_name": "llama-3.1-8b-instant",
     "payout_price": {
       "description": "Service provider charges $0.05 / $0.08 per 1M input/output tokens",
@@ -33,6 +34,7 @@
     },
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "ready",
+    "supports_tools": true
   }
 }

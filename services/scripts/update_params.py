@@ -66,6 +66,7 @@ class ModelSource:
     def _build_template_vars(self, model_id: str, model_info: dict) -> dict:
         """Build template variables for a model."""
         service_type = self._determine_service_type(model_id)
+        modality = self._modality(model_id, model_info)
         display_name = model_id.replace("-", " ").replace("_", " ").title()
 
         # Build details from LiteLLM data and model info
@@ -146,7 +147,17 @@ class ModelSource:
             "display_name": display_name,
             "description": f"{display_name} language model",
             "service_type": service_type,
-            "status": "ready",
+            # Chat-only docs (the OpenAI/Anthropic examples, function calling)
+            # are wrong for a transcription/TTS/classification model, and the
+            # gateway + preset coverage for those modalities is incomplete
+            # (no connectivity preset for tts/classification, /v1/audio/speech
+            # unproven). Keep them out of the published catalog as drafts until
+            # that lands — see unitysvc/unitysvc#1781.
+            "status": "draft" if modality else "ready",
+            "modality": modality,
+            # Only some Groq chat models advertise tool use; the function-calling
+            # example 400s on the ones that do not.
+            "supports_tools": "tools" in (model_info.get("supported_features") or []),
             "details": details,
             "payout_price": pricing,
             # Listing fields
@@ -157,6 +168,28 @@ class ModelSource:
             "api_base_url": API_BASE_URL,
             "env_api_key_name": ENV_API_KEY_NAME,
         }
+
+    #: Models Groq serves that are not chat-completions services. Groq's
+    #: /models exposes input_modalities / output_modalities, so audio-in
+    #: (transcription) and speech-out (TTS) are detected from the metadata.
+    #: Classification models carry no distinguishing field — they simply reject
+    #: a normal chat request with "messages must contains a single user message
+    #: for text classification models" — so they are listed explicitly.
+    CLASSIFICATION_MODELS = frozenset(
+        {"meta-llama/llama-prompt-guard-2-22m", "meta-llama/llama-prompt-guard-2-86m"}
+    )
+
+    def _modality(self, model_id: str, model_info: dict) -> str | None:
+        """Return the non-chat modality of a model, or None when it is a chat model."""
+        outputs = set(model_info.get("output_modalities") or [])
+        inputs = set(model_info.get("input_modalities") or [])
+        if "transcription" in outputs or "audio" in inputs:
+            return "transcription"
+        if "speech" in outputs:
+            return "tts"
+        if model_id in self.CLASSIFICATION_MODELS:
+            return "classification"
+        return None
 
     def _determine_service_type(self, model_id: str) -> str:
         model_lower = model_id.lower()

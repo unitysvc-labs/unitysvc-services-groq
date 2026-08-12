@@ -26,6 +26,7 @@
       "output": "0",
       "type": "one_million_tokens"
     },
+    "modality": null,
     "offering_name": "openai/gpt-oss-safeguard-20b",
     "payout_price": {
       "cached_input": "0",
@@ -36,6 +37,7 @@
     },
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "ready",
+    "supports_tools": true
   }
 }
