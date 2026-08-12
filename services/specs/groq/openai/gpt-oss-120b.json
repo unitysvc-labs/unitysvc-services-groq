@@ -25,6 +25,7 @@
       "output": "0",
       "type": "one_million_tokens"
     },
+    "modality": null,
     "offering_name": "openai/gpt-oss-120b",
     "payout_price": {
       "description": "Service provider charges $0.35 / $0.75 per 1M input/output tokens",
@@ -34,6 +35,7 @@
     },
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "ready",
+    "supports_tools": true
   }
 }

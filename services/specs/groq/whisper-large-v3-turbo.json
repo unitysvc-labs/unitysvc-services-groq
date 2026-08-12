@@ -13,10 +13,12 @@
     "display_name": "Whisper Large V3 Turbo",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
+    "modality": "transcription",
     "offering_name": "whisper-large-v3-turbo",
     "payout_price": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "draft",
+    "supports_tools": false
   }
 }

@@ -14,10 +14,12 @@
     "display_name": "Qwen/Qwen3.6 27B",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
+    "modality": null,
     "offering_name": "qwen/qwen3.6-27b",
     "payout_price": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "ready",
+    "supports_tools": true
   }
 }

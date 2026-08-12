@@ -11,10 +11,12 @@
     "display_name": "Canopylabs/Orpheus V1 English",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
+    "modality": "tts",
     "offering_name": "canopylabs/orpheus-v1-english",
     "payout_price": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "draft",
+    "supports_tools": false
   }
 }

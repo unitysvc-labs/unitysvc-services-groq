@@ -11,10 +11,12 @@
     "display_name": "Groq/Compound",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
+    "modality": null,
     "offering_name": "groq/compound",
     "payout_price": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "ready"
+    "status": "ready",
+    "supports_tools": false
   }
 }
