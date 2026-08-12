@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.groq.com/openai/v1",
+    "description": "Qwen/Qwen3.6 27B language model",
+    "details": {
+      "context_length": 262144,
+      "metadata_sources": {
+        "context_length": "openrouter"
+      },
+      "object": "model",
+      "owned_by": "Alibaba Cloud",
+      "parameter_count": null
+    },
+    "display_name": "Qwen/Qwen3.6 27B",
+    "env_api_key_name": "GROQ_API_KEY",
+    "list_price": null,
+    "offering_name": "qwen/qwen3.6-27b",
+    "payout_price": null,
+    "provider_display_name": "Groq",
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
