@@ -32,7 +32,18 @@
   "summary": {{ _brief[:200] | tojson }},
   "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
-  "capabilities": ["{{ service_type }}"],
+{#- Platform capability vocabulary (unitysvc docs/capabilities.yml) — what the
+    caller GETS, which is a different axis from service_type. `modality` is the
+    populator's own first-party read of Groq's input_modalities /
+    output_modalities (plus the explicit classification list), so it decides
+    first; service_type only covers the chat-shaped remainder.
+    `vision_language_model` folds into chat — an image in the request is an
+    attribute of a chat call, not a capability of its own. -#}
+{%- set _cap = {"transcription": "speech-transcribe", "tts": "speech-synthesize",
+                "classification": "moderate"}.get(modality)
+             or {"llm": "chat", "embedding": "embed", "rerank": "rerank",
+                 "vision_language_model": "chat"}.get(service_type, "chat") %}
+  "capabilities": ["{{ _cap }}"],
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   "tags": ["ai", "gateway", "byok"],
