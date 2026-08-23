@@ -35,6 +35,7 @@
       "output": "0",
       "type": "one_million_tokens"
     },
+    "pricing_note": "$0.075 / $0.3 / $0.037 per 1M input/output/cached tokens",
     "provider_display_name": "Groq",
     "service_type": "llm",
     "status": "ready",
