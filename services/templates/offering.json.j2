@@ -16,7 +16,13 @@
 {%- set _dual = ' — callable in both OpenAI and Anthropic API styles through the UnitySVC gateway.' %}
 {%- set _brief = (_base ~ _dual) if ((_base | length) + (_dual | length) < 195) else _base %}
 {%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if details.context_length else '' %}
-{%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API' ~ _ctx ~ '. Requests are proxied through the UnitySVC gateway; you bring your own ' ~ provider_display_name ~ ' API key, so token usage is billed by ' ~ provider_display_name ~ ' directly and the service is free through UnitySVC.' %}
+{#- The upstream rate belongs in prose as well as in the price cell's hover
+    note: a `title` attribute is unreachable on touch, absent from the API and
+    MCP catalog surfaces (`market_list_services` returns the description, not a
+    rendered tooltip), and not searchable. For a BYOK listing that rate is the
+    difference between "free" and real money, so it states it here too. #}
+{%- set _at_rate = (' at ' ~ pricing_note) if pricing_note else '' %}
+{%- set _detail = display_name ~ ' is served by ' ~ provider_display_name ~ ' over an OpenAI-compatible API' ~ _ctx ~ '. Requests are proxied through the UnitySVC gateway; you bring your own ' ~ provider_display_name ~ ' API key, so token usage is billed by ' ~ provider_display_name ~ ' directly' ~ _at_rate ~ ', and the service is free through UnitySVC.' %}
 {%- set _howto = 'Reach it through the UnitySVC gateway with your own ' ~ provider_display_name ~ ' API key (the byok channel). See the code examples for both styles.' %}
 {#- Dedicated interoperability paragraph: the dual-dialect endpoint is the
     platform differentiator and what makes services interchangeable enough to
