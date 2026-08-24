@@ -41,6 +41,32 @@
     "How to use this model": {
       "$doc_preset": "llm_description"
     },
+{#- Transcription models serve /v1/audio/transcriptions; every chat preset below
+    POSTs a chat-completion body they reject. `llm_connectivity` in particular is
+    the document the activation gate keys on (`check_service_tests_passed`), so
+    a service declaring `speech-transcribe` was being backed by a probe that
+    proves `chat`. unitysvc-data ships the matching transcription presets — the
+    cohere repo already uses them — so this branch just wires them up.
+
+    The other two non-chat modalities (tts, classification) have no connectivity
+    preset yet and stay on the chat set; they are held at `status: draft` for
+    exactly that reason (unitysvc/unitysvc#1781). -#}
+{%- if modality == "transcription" %}
+    "Python code example": {
+      "$doc_preset": "llm_code_example_transcription_requests", "meta": {"sleep_after_test": 5}
+    },
+    "JavaScript code example": {
+      "$doc_preset": "llm_code_example_transcription_javascript", "meta": {"sleep_after_test": 5}
+    },
+    "cURL code example": {
+      "$doc_preset": "llm_code_example_transcription_shell", "meta": {"sleep_after_test": 5}
+    },
+    "Connectivity test": {
+      "$doc_preset": "llm_connectivity_transcription", "meta": {"sleep_after_test": 5}
+    }
+  }
+}
+{%- else %}
     "Python code example": {
       "$doc_preset": "llm_code_example_openai", "meta": {"sleep_after_test": 5}
     },
@@ -71,3 +97,4 @@
     }
   }
 }
+{%- endif %}
