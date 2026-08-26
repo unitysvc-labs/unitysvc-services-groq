@@ -179,16 +179,6 @@ class ModelSource:
             "env_api_key_name": ENV_API_KEY_NAME,
         }
 
-    #: Models Groq serves that are not chat-completions services. Groq's
-    #: /models exposes input_modalities / output_modalities, so audio-in
-    #: (transcription) and speech-out (TTS) are detected from the metadata.
-    #: Classification models carry no distinguishing field — they simply reject
-    #: a normal chat request with "messages must contains a single user message
-    #: for text classification models" — so they are listed explicitly.
-    CLASSIFICATION_MODELS = frozenset(
-        {"meta-llama/llama-prompt-guard-2-22m", "meta-llama/llama-prompt-guard-2-86m"}
-    )
-
     def _modality(self, model_id: str, model_info: dict) -> str | None:
         """Return the non-chat modality of a model, or None when it is a chat model."""
         outputs = set(model_info.get("output_modalities") or [])
@@ -197,8 +187,11 @@ class ModelSource:
             return "transcription"
         if "speech" in outputs:
             return "tts"
-        if model_id in self.CLASSIFICATION_MODELS:
-            return "classification"
+        # Classification models carry no distinguishing metadata field — they
+        # simply reject a normal chat request. They are marked via per-model
+        # <name>.override.json companions ({"parameters": {"modality":
+        # "classification", "status": "draft"}}), merged at render time, so
+        # this script never changes for one.
         return None
 
     def _determine_service_type(self, model_id: str) -> str:
