@@ -37,64 +37,37 @@
       "routing_key": {"model": "{{ offering_name }}"}
     }
   },
-  "documents": {
-    "How to use this model": {
-      "$doc_preset": "llm_description"
-    },
-{#- Transcription models serve /v1/audio/transcriptions; every chat preset below
-    POSTs a chat-completion body they reject. `llm_connectivity` in particular is
-    the document the activation gate keys on (`check_service_tests_passed`), so
-    a service declaring `speech-transcribe` was being backed by a probe that
-    proves `chat`. unitysvc-data ships the matching transcription presets — the
-    cohere repo already uses them — so this branch just wires them up.
+  {#- Every document below is DERIVED from what this service is: its
+      capability and the request dialects it accepts (unitysvc/unitysvc#1899).
+      The catalog-wide shape lives in unitysvc-data's `llm_example_collection`
+      preset, so a new example flavour or a fixed preset reaches this repo on
+      the next release rather than through a PR here.
 
-    The other two non-chat modalities (tts, classification) have no connectivity
-    preset yet and stay on the chat set; they are held at `status: draft` for
-    exactly that reason (unitysvc/unitysvc#1781). -#}
+      A collection covers ONE capability, so the transcription / chat dispatch
+      stays — but the capability now picks the connectivity probe itself, which
+      is the guarantee the hand-written branch was written to provide: a
+      transcription service must not be proved by a chat-completion probe
+      (`check_service_tests_passed` keys on that document).
+
+      tts and classification still have no connectivity preset in
+      unitysvc-data, so they keep falling into the chat branch and stay at
+      `status: draft` for exactly that reason (unitysvc/unitysvc#1781). -#}
+  "documents": {
 {%- if modality == "transcription" %}
-    "Python code example": {
-      "$doc_preset": "llm_code_example_transcription_requests", "meta": {"sleep_after_test": 5}
-    },
-    "JavaScript code example": {
-      "$doc_preset": "llm_code_example_transcription_javascript", "meta": {"sleep_after_test": 5}
-    },
-    "cURL code example": {
-      "$doc_preset": "llm_code_example_transcription_shell", "meta": {"sleep_after_test": 5}
-    },
-    "Connectivity test": {
-      "$doc_preset": "llm_connectivity_transcription", "meta": {"sleep_after_test": 5}
+    "$llm_example_collection": {
+      "capabilities": ["speech-transcribe"],
+      "formats": ["openai"],
+      "upstream_dialect": "openai",
+      "sleep": 5
     }
-  }
-}
 {%- else %}
-    "Python code example": {
-      "$doc_preset": "llm_code_example_openai", "meta": {"sleep_after_test": 5}
-    },
-    "Python code example (Anthropic-style input)": {
-      "$doc_preset": "llm_code_example_anthropic_to_openai_sdk", "meta": {"sleep_after_test": 5}
-    },
-    "cURL code example (Anthropic-style input)": {
-      "$doc_preset": "llm_code_example_anthropic_to_openai_shell", "meta": {"sleep_after_test": 5}
-    },
-{%- if supports_tools | default(true) %}
-    {#- Only advertise function calling where Groq reports "tools" in
-        supported_features; the example 400s on models without it. #}
-    "Python function calling code example": {
-      "$doc_preset": "llm_code_example_fc_requests", "meta": {"sleep_after_test": 5}
-    },
-{%- endif %}
-    "JavaScript code example": {
-      "$doc_preset": "llm_code_example_javascript", "meta": {"sleep_after_test": 5}
-    },
-    "cURL code example": {
-      "$doc_preset": "llm_code_example_shell", "meta": {"sleep_after_test": 5}
-    },
-    "Connectivity test": {
-      "$doc_preset": "llm_connectivity", "meta": {"sleep_after_test": 5}
-    },
-    "Default request body": {
-      "$doc_preset": "llm_request_template"
+    "$llm_example_collection": {
+      "capabilities": ["chat"],
+      "formats": ["openai", "anthropic"],
+      "upstream_dialect": "openai",
+      "tools": {{ (supports_tools | default(true)) | tojson }},
+      "sleep": 5
     }
+{%- endif %}
   }
 }
-{%- endif %}
