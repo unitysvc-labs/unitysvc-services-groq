@@ -3,7 +3,15 @@
     "api_base_url": "https://api.groq.com/openai/v1",
     "description": "Canopylabs/Orpheus Arabic Saudi language model",
     "details": {
-      "context_length": null,
+      "context_length": 4000,
+      "litellm_provider": "groq",
+      "max_input_tokens": 4000,
+      "max_output_tokens": 50000,
+      "max_tokens": 50000,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "audio_speech",
       "object": "model",
       "owned_by": "Canopy Labs",
       "parameter_count": null
@@ -14,6 +22,7 @@
     "modality": "tts",
     "offering_name": "canopylabs/orpheus-arabic-saudi",
     "payout_price": null,
+    "pricing_note": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
     "status": "draft",

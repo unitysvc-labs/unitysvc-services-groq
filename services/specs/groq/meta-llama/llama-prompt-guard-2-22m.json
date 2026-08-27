@@ -3,20 +3,39 @@
     "api_base_url": "https://api.groq.com/openai/v1",
     "description": "Meta Llama/Llama Prompt Guard 2 22M language model",
     "details": {
-      "context_length": null,
+      "context_length": 512,
+      "litellm_provider": "groq",
+      "max_input_tokens": 512,
+      "max_output_tokens": 512,
+      "max_tokens": 512,
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "mode": "chat",
       "object": "model",
       "owned_by": "Meta",
       "parameter_count": null
     },
     "display_name": "Meta Llama/Llama Prompt Guard 2 22M",
     "env_api_key_name": "GROQ_API_KEY",
-    "list_price": null,
-    "modality": "classification",
+    "list_price": {
+      "description": "Service provider charges $0.03 / $0.03 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "modality": null,
     "offering_name": "meta-llama/llama-prompt-guard-2-22m",
-    "payout_price": null,
+    "payout_price": {
+      "description": "Service provider charges $0.03 / $0.03 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "pricing_note": "$0.03 / $0.03 per 1M input/output tokens",
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "draft",
+    "status": "ready",
     "supports_tools": false
   }
 }

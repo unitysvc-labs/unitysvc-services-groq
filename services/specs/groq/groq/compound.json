@@ -14,6 +14,7 @@
     "modality": null,
     "offering_name": "groq/compound",
     "payout_price": null,
+    "pricing_note": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
     "status": "ready",
