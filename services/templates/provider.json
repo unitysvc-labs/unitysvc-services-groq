@@ -4,6 +4,21 @@
   "homepage": "https://groq.com/",
   "logo": "https://groq.com/favicon.svg",
   "name": "groq",
+  "rate_limits": [
+    {
+      "description": "Self-imposed ceiling so platform test sweeps cannot saturate the account; not a published provider limit.",
+      "limit": 10,
+      "name": "groq_concurrency",
+      "unit": "concurrent"
+    },
+    {
+      "description": "Self-imposed ceiling so platform test sweeps cannot saturate the account; not a published provider limit.",
+      "limit": 100,
+      "name": "groq_rpm",
+      "unit": "requests",
+      "window": "minute"
+    }
+  ],
   "status": "ready",
   "terms_of_service": "https://groq.com/terms-of-use",
   "time_created": "2025-08-28T00:00:00Z"
