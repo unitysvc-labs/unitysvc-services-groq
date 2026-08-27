@@ -4,19 +4,35 @@
     "description": "Qwen/Qwen3.6 27B language model",
     "details": {
       "context_length": 262144,
+      "litellm_provider": "groq",
+      "max_input_tokens": 131072,
+      "max_output_tokens": 16384,
+      "max_tokens": 16384,
       "metadata_sources": {
         "context_length": "openrouter"
       },
+      "mode": "chat",
       "object": "model",
       "owned_by": "Alibaba Cloud",
       "parameter_count": null
     },
     "display_name": "Qwen/Qwen3.6 27B",
     "env_api_key_name": "GROQ_API_KEY",
-    "list_price": null,
+    "list_price": {
+      "description": "Service provider charges $0.6 / $3 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
     "modality": null,
     "offering_name": "qwen/qwen3.6-27b",
-    "payout_price": null,
+    "payout_price": {
+      "description": "Service provider charges $0.6 / $3 per 1M input/output tokens",
+      "input": "0",
+      "output": "0",
+      "type": "one_million_tokens"
+    },
+    "pricing_note": "$0.6 / $3 per 1M input/output tokens",
     "provider_display_name": "Groq",
     "service_type": "llm",
     "status": "ready",

@@ -15,7 +15,7 @@
       "mode": "chat",
       "object": "model",
       "owned_by": "OpenAI",
-      "parameter_count": 19707494400
+      "parameter_count": 19110297600
     },
     "display_name": "Openai/Gpt Oss 20B",
     "env_api_key_name": "GROQ_API_KEY",

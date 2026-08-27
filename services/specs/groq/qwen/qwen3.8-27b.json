@@ -1,23 +1,26 @@
 {
   "parameters": {
     "api_base_url": "https://api.groq.com/openai/v1",
-    "description": "Groq/Compound Mini language model",
+    "description": "Qwen/Qwen3.8 27B language model",
     "details": {
-      "context_length": null,
+      "context_length": 1000000,
+      "metadata_sources": {
+        "context_length": "openrouter"
+      },
       "object": "model",
-      "owned_by": "Groq",
+      "owned_by": "Alibaba Cloud",
       "parameter_count": null
     },
-    "display_name": "Groq/Compound Mini",
+    "display_name": "Qwen/Qwen3.8 27B",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
     "modality": null,
-    "offering_name": "groq/compound-mini",
+    "offering_name": "qwen/qwen3.8-27b",
     "payout_price": null,
     "pricing_note": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
     "status": "ready",
-    "supports_tools": false
+    "supports_tools": true
   }
 }
