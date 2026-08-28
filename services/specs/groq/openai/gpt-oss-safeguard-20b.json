@@ -26,7 +26,6 @@
       "output": "0",
       "type": "one_million_tokens"
     },
-    "modality": null,
     "offering_name": "openai/gpt-oss-safeguard-20b",
     "payout_price": {
       "cached_input": "0",

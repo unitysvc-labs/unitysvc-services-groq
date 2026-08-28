@@ -24,7 +24,6 @@
       "output": "0",
       "type": "one_million_tokens"
     },
-    "modality": null,
     "offering_name": "llama-3.3-70b-versatile",
     "payout_price": {
       "description": "Service provider charges $0.59 / $0.79 per 1M input/output tokens",

@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "modality": "classification",
+    "capability": "moderate",
     "status": "deprecated"
   }
 }

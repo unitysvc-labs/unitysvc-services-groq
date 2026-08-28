@@ -14,7 +14,6 @@
     "display_name": "Qwen/Qwen3.8 27B",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
-    "modality": null,
     "offering_name": "qwen/qwen3.8-27b",
     "payout_price": null,
     "pricing_note": null,

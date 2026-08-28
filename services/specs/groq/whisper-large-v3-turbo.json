@@ -1,6 +1,7 @@
 {
   "parameters": {
     "api_base_url": "https://api.groq.com/openai/v1",
+    "capability": "speech-to-text",
     "description": "Whisper Large V3 Turbo language model",
     "details": {
       "context_length": null,
@@ -13,13 +14,12 @@
     "display_name": "Whisper Large V3 Turbo",
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": null,
-    "modality": "transcription",
     "offering_name": "whisper-large-v3-turbo",
     "payout_price": null,
     "pricing_note": null,
     "provider_display_name": "Groq",
     "service_type": "llm",
-    "status": "draft",
+    "status": "ready",
     "supports_tools": false
   }
 }
