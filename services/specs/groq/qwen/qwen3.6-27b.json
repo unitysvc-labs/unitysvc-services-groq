@@ -24,7 +24,6 @@
       "output": "0",
       "type": "one_million_tokens"
     },
-    "modality": null,
     "offering_name": "qwen/qwen3.6-27b",
     "payout_price": {
       "description": "Service provider charges $0.6 / $3 per 1M input/output tokens",

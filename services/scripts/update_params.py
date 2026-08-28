@@ -66,7 +66,7 @@ class ModelSource:
     def _build_template_vars(self, model_id: str, model_info: dict) -> dict:
         """Build template variables for a model."""
         service_type = self._determine_service_type(model_id)
-        modality = self._modality(model_id, model_info)
+        capability = self._capability(model_id, model_info)
         display_name = model_id.replace("-", " ").replace("_", " ").title()
 
         # Build details from LiteLLM data and model info
@@ -154,14 +154,14 @@ class ModelSource:
             "display_name": display_name,
             "description": f"{display_name} language model",
             "service_type": service_type,
-            # Chat-only docs (the OpenAI/Anthropic examples, function calling)
-            # are wrong for a transcription/TTS/classification model, and the
-            # gateway + preset coverage for those modalities is incomplete
-            # (no connectivity preset for tts/classification, /v1/audio/speech
-            # unproven). Keep them out of the published catalog as drafts until
-            # that lands — see unitysvc/unitysvc#1781.
-            "status": "draft" if modality else "ready",
-            "modality": modality,
+            # Everything ships `ready`. Holding a model back is done per-model
+            # through a <name>.override.json companion, not by a blanket rule
+            # here — and with `deprecated`, never `draft`: ingest treats a draft
+            # entity as a HARD ERROR that fails the whole upload task, so a
+            # couple of unpublishable models used to take the other 100+ groq
+            # services down with them (unitysvc/unitysvc#1781).
+            "status": "ready",
+            "capability": capability,
             # Only some Groq chat models advertise tool use; the function-calling
             # example 400s on the ones that do not.
             "supports_tools": "tools" in (model_info.get("supported_features") or []),
@@ -179,19 +179,42 @@ class ModelSource:
             "env_api_key_name": ENV_API_KEY_NAME,
         }
 
-    def _modality(self, model_id: str, model_info: dict) -> str | None:
-        """Return the non-chat modality of a model, or None when it is a chat model."""
+    def _capability(self, model_id: str, model_info: dict) -> str | None:
+        """Return the platform capability of a non-chat model, or None for chat.
+
+        Returns a PLATFORM capability id (unitysvc docs/capabilities.yml) —
+        `speech-to-text`, `text-to-speech`, `moderate` — not an intermediate
+        vocabulary of our own. This used to return `modality`
+        ("transcription" / "tts" / "classification"), which matched neither
+        side: Groq says `output_modalities: ["speech"]`, never "tts", and
+        "classification" was invented here. The templates then mapped that
+        middle layer back onto capabilities, so the mapping existed twice and
+        could drift. `capability` is the platform's concept; use it directly.
+        """
         outputs = set(model_info.get("output_modalities") or [])
         inputs = set(model_info.get("input_modalities") or [])
         if "transcription" in outputs or "audio" in inputs:
-            return "transcription"
+            return "speech-to-text"
         if "speech" in outputs:
-            return "tts"
+            return "text-to-speech"
         # Classification models carry no distinguishing metadata field — they
         # simply reject a normal chat request. They are marked via per-model
         # <name>.override.json companions ({"parameters": {"modality":
-        # "classification", "status": "draft"}}), merged at render time, so
+        # "classification", "status": "deprecated"}}), merged at render time, so
         # this script never changes for one.
+        #
+        # `deprecated`, not `draft`: ingest treats a draft entity as a HARD
+        # ERROR ("Cannot publish: Listing status is 'draft'") and fails the
+        # whole upload task, so two unpublishable models took the other 100+
+        # groq services down with them on every production upload. `deprecated`
+        # is accepted, propagates to the Service record, and is excluded from
+        # `service_mview` — unpublished, but not fatal.
+        #
+        # These stay held back until `llm_connectivity_guard` exists in
+        # unitysvc-data (unitysvc/unitysvc#1781): connectivity is mandatory to
+        # activate, and classification has code examples but no probe. When it
+        # lands, re-uploading live content over the tombstone revives it
+        # through the normal revision flow, preserving the service id.
         return None
 
     def _determine_service_type(self, model_id: str) -> str:

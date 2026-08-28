@@ -1,3 +1,7 @@
+{#- Platform capability (unitysvc docs/capabilities.yml), supplied by the
+    populator as a platform id. Chat-shaped models carry none, so default
+    to chat — the same fallback the offering template applies. -#}
+{%- set _cap = capability | default("chat", true) %}
 {
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
@@ -49,13 +53,26 @@
       transcription service must not be proved by a chat-completion probe
       (`check_service_tests_passed` keys on that document).
 
-      tts and classification still have no connectivity preset in
-      unitysvc-data, so they keep falling into the chat branch and stay at
-      `status: draft` for exactly that reason (unitysvc/unitysvc#1781). -#}
+      text-to-speech gained its examples AND a probe in unitysvc-data 0.1.40
+      (`llm_connectivity_tts`), so it now gets its own branch rather than
+      falling through to chat — falling through handed a TTS service
+      /chat/completions examples, which is what happened to parasail's
+      resemble-tts-en (unitysvc-labs/unitysvc-services-parasail#52).
+
+      `moderate` (the guard models) still has no connectivity preset, so it has
+      no branch and is held back per-model with an override companion instead
+      (unitysvc/unitysvc#1781). -#}
   "documents": {
-{%- if modality == "transcription" %}
+{%- if _cap == "speech-to-text" %}
     "$llm_example_collection": {
       "capabilities": ["speech-to-text"],
+      "formats": ["openai"],
+      "upstream_dialect": "openai",
+      "sleep": 5
+    }
+{%- elif _cap == "text-to-speech" %}
+    "$llm_example_collection": {
+      "capabilities": ["text-to-speech"],
       "formats": ["openai"],
       "upstream_dialect": "openai",
       "sleep": 5

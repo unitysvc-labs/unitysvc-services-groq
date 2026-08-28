@@ -24,7 +24,6 @@
       "output": "0",
       "type": "one_million_tokens"
     },
-    "modality": null,
     "offering_name": "meta-llama/llama-prompt-guard-2-86m",
     "payout_price": {
       "description": "Service provider charges $0.04 / $0.04 per 1M input/output tokens",

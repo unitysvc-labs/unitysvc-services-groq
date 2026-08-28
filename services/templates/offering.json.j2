@@ -33,14 +33,21 @@
   "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
 {#- Platform capability vocabulary (unitysvc docs/capabilities.yml) — what the
-    caller GETS, which is a different axis from service_type. `modality` is the
-    populator's own first-party read of Groq's input_modalities /
-    output_modalities (plus the explicit classification list), so it decides
-    first; service_type only covers the chat-shaped remainder.
+    caller GETS, which is a different axis from service_type. `capability` is
+    the populator's read of Groq's input_modalities / output_modalities (plus
+    the per-model override companions), ALREADY as a platform id, so it is used
+    as-is; service_type only covers the chat-shaped remainder.
+
+    It used to arrive as a `modality` ("transcription" / "tts" /
+    "classification") that this template mapped back onto capabilities. That
+    middle vocabulary matched neither side — Groq says `["speech"]`, never
+    "tts", and "classification" was invented — and it meant the mapping lived
+    in two places. The platform's concept is `capability`; there is no second
+    one.
+
     `vision_language_model` folds into chat — an image in the request is an
     attribute of a chat call, not a capability of its own. -#}
-{%- set _cap = {"transcription": "speech-to-text", "tts": "text-to-speech",
-                "classification": "moderate"}.get(modality)
+{%- set _cap = capability
              or {"llm": "chat", "embedding": "embed", "rerank": "rerank",
                  "vision_language_model": "chat"}.get(service_type, "chat") %}
   "capabilities": ["{{ _cap }}"],
