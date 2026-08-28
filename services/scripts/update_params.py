@@ -190,8 +190,21 @@ class ModelSource:
         # Classification models carry no distinguishing metadata field — they
         # simply reject a normal chat request. They are marked via per-model
         # <name>.override.json companions ({"parameters": {"modality":
-        # "classification", "status": "draft"}}), merged at render time, so
+        # "classification", "status": "deprecated"}}), merged at render time, so
         # this script never changes for one.
+        #
+        # `deprecated`, not `draft`: ingest treats a draft entity as a HARD
+        # ERROR ("Cannot publish: Listing status is 'draft'") and fails the
+        # whole upload task, so two unpublishable models took the other 100+
+        # groq services down with them on every production upload. `deprecated`
+        # is accepted, propagates to the Service record, and is excluded from
+        # `service_mview` — unpublished, but not fatal.
+        #
+        # These stay held back until `llm_connectivity_guard` exists in
+        # unitysvc-data (unitysvc/unitysvc#1781): connectivity is mandatory to
+        # activate, and classification has code examples but no probe. When it
+        # lands, re-uploading live content over the tombstone revives it
+        # through the normal revision flow, preserving the service id.
         return None
 
     def _determine_service_type(self, model_id: str) -> str:
