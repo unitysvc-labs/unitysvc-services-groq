@@ -39,7 +39,7 @@
     first; service_type only covers the chat-shaped remainder.
     `vision_language_model` folds into chat — an image in the request is an
     attribute of a chat call, not a capability of its own. -#}
-{%- set _cap = {"transcription": "speech-transcribe", "tts": "speech-synthesize",
+{%- set _cap = {"transcription": "speech-to-text", "tts": "text-to-speech",
                 "classification": "moderate"}.get(modality)
              or {"llm": "chat", "embedding": "embed", "rerank": "rerank",
                  "vision_language_model": "chat"}.get(service_type, "chat") %}
