@@ -53,7 +53,24 @@
   "capabilities": ["{{ _cap }}"],
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
-  "tags": ["ai", "gateway", "byok"],
+{#- Tags are a CLOSED vocabulary (unitysvc docs/tags.yml) and ingest rejects
+    anything outside it. The old `["ai", "gateway", "byok"]` were all
+    restatements of fields the platform already owns and derives — `ai` said
+    what `service_type` says, `gateway` duplicated the DERIVED `gateway_type`,
+    and `byok` named the enrollment channel the gateway routes on — so they are
+    gone rather than translated.
+
+    `feature:func-call` is the one tag a seller may declare, because only the
+    spec side knows it. The signal is Groq's own `supported_features` containing
+    "tools", captured by the populator as `supports_tools`; the same flag gates
+    the function-calling code example in listing.json.j2, so the badge and the
+    example can never disagree. Guarded on `_cap == "chat"` as well, so a
+    transcription or speech model can never claim it even if the upstream flag
+    were ever set. No signal (an older param file) means no tag: a false
+    func-call badge ships a customer an example that 400s. -#}
+{%- if (supports_tools | default(false)) and _cap == "chat" %}
+  "tags": ["feature:func-call"],
+{%- endif %}
   "details": {{ dict(details or {}, input_formats=["openai", "anthropic"], output_formats=["openai_response", "anthropic_response"]) | tojson }},
 {%- if payout_price %}
   "payout_price": {{ payout_price | tojson }},
