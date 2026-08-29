@@ -1,6 +1,7 @@
 {
   "parameters": {
     "api_base_url": "https://api.groq.com/openai/v1",
+    "capability": null,
     "description": "Qwen/Qwen3.8 27B language model",
     "details": {
       "context_length": 1000000,
