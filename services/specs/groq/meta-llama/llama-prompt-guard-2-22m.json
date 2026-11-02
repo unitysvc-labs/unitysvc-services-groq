@@ -8,7 +8,6 @@
       "litellm_provider": "groq",
       "max_input_tokens": 512,
       "max_output_tokens": 512,
-      "max_tokens": 512,
       "metadata_sources": {
         "context_length": "litellm"
       },
