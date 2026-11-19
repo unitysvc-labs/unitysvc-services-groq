@@ -21,7 +21,7 @@
     "env_api_key_name": "GROQ_API_KEY",
     "list_price": {
       "cached_input": "0",
-      "description": "Service provider charges $0.075 / $0.3 / $0.037 per 1M input/output/cached tokens",
+      "description": "Service provider charges $0.075 / $0.3 / $0.0375 per 1M input/output/cached tokens",
       "input": "0",
       "output": "0",
       "type": "one_million_tokens"
@@ -29,12 +29,12 @@
     "offering_name": "openai/gpt-oss-safeguard-20b",
     "payout_price": {
       "cached_input": "0",
-      "description": "Service provider charges $0.075 / $0.3 / $0.037 per 1M input/output/cached tokens",
+      "description": "Service provider charges $0.075 / $0.3 / $0.0375 per 1M input/output/cached tokens",
       "input": "0",
       "output": "0",
       "type": "one_million_tokens"
     },
-    "pricing_note": "$0.075 / $0.3 / $0.037 per 1M input/output/cached tokens",
+    "pricing_note": "$0.075 / $0.3 / $0.0375 per 1M input/output/cached tokens",
     "provider_display_name": "Groq",
     "service_type": "llm",
     "status": "ready",
